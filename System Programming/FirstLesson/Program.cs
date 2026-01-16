@@ -1,6 +1,10 @@
 ﻿using System.Runtime.InteropServices;
 
-MessageBox(IntPtr.Zero, "Заголовок", "Основной текст!", 0);
+var argumentA = int.Parse(Console.ReadLine());
+var argumentB = int.Parse(Console.ReadLine());
 
-[DllImport("user32.dll")] 
-static extern int MessageBox(IntPtr hWnd, string text, string caption, uint type);
+var result = Add(argumentA, argumentB);
+Console.WriteLine(result);
+
+[DllImport("SimpleMath.dll", CharSet = CharSet.Unicode)]
+static extern int Add(int a, int b);
