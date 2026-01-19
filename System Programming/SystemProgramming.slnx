@@ -4,6 +4,13 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="FirstLesson/FirstLesson.csproj" />
-  <Project Path="SimpleMath/SimpleMath.vcxproj" />
+  <Folder Name="/FirstLesson/">
+    <Project Path="FirstLesson/FirstLesson.csproj" />
+    <Project Path="SimpleMath/SimpleMath.vcxproj" Id="adf4d1f1-854a-4cc1-ac0c-b1fa29362965" />
+  </Folder>
+  <Folder Name="/SecondLesson/">
+    <Project Path="FirstApp/FirstApp.csproj" Id="efba006a-636a-459b-ac87-c5ab0f76e423" />
+    <Project Path="SecondApp/SecondApp.csproj" Id="869e90bd-bfbe-44b0-abcc-e006c5db7a57" />
+    <Project Path="SecondLessonConsole/SecondLessonConsole.csproj" Id="2bb88653-ac2e-493d-be5a-d8ebb08d9267" />
+  </Folder>
 </Solution>
