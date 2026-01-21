@@ -13,4 +13,8 @@
     <Project Path="SecondApp/SecondApp.csproj" Id="869e90bd-bfbe-44b0-abcc-e006c5db7a57" />
     <Project Path="SecondLessonConsole/SecondLessonConsole.csproj" Id="2bb88653-ac2e-493d-be5a-d8ebb08d9267" />
   </Folder>
+  <Folder Name="/ThirdLesson/">
+    <Project Path="FirstExample/FirstExample.csproj" Id="c936e3eb-8245-492f-90f1-08917e051e90" />
+    <Project Path="SecondExample/SecondExample.csproj" Id="07c261a1-f07a-4c6f-93b8-cd38f79f8215" />
+  </Folder>
 </Solution>
