@@ -4,17 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:SecondExample"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    xmlns:vm="clr-namespace:SecondExample.Vm" 
-    d:DataContext="{d:DesignInstance Type=vm:MainWindowVm}"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="clr-namespace:SecondExample.Vm"
     Title="MainWindow"
     Width="800"
     Height="450"
+    d:DataContext="{d:DesignInstance Type=vm:MainWindowVm}"
     mc:Ignorable="d">
     <Grid>
         <StackPanel
             Width="350"
-            Height="90"
+            Height="120"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
 
@@ -31,8 +31,14 @@
             <Button
                 Width="350"
                 Height="30"
-                Content="Посчитать"
-                Command="{Binding CalculateCommand}"/>
+                Command="{Binding CalculateCommand}"
+                Content="Посчитать" />
+
+            <Button
+                Width="350"
+                Height="30"
+                Command="{Binding CancelCalculateCommand}"
+                Content="Отмена" />
         </StackPanel>
     </Grid>
 </Window>

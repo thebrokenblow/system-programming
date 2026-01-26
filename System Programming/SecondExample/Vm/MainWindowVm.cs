@@ -1,9 +1,9 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
+﻿using SecondExample.Model;
+using System.Windows;
 
 namespace SecondExample.Vm;
 
-public class MainWindowVm : INotifyPropertyChanged
+public class MainWindowVm : BaseVm
 {
     public int Argument { get; set; }
 
@@ -22,32 +22,76 @@ public class MainWindowVm : INotifyPropertyChanged
     }
 
     public RelayCommand CalculateCommand { get; }
+    public RelayCommand CancelCalculateCommand { get; }
 
-    public MainWindowVm()
+    private bool isEnabled;
+    public bool IsEnabled 
     {
-        CalculateCommand = new (CalculateSum);
+        get
+        {
+            return isEnabled;
+        }
+        set
+        {
+            isEnabled = value;
+            
+            OnPropertyChanged();
+
+            CalculateCommand.RaiseCanExecuteChanged();
+            CancelCalculateCommand.RaiseCanExecuteChanged();
+        }
     }
 
-    public void CalculateSum(object? parametr)
+    private readonly Action<string> _messageWindow;
+
+    private CancellationTokenSource? cancellationTokenSource;
+    public MainWindowVm(Action<string> messageWindow)
     {
+        _messageWindow = messageWindow;
+        
+        CalculateCommand = new (CalculateSum, _ => !IsEnabled);
+        CancelCalculateCommand = new(_ => cancellationTokenSource?.Cancel(), _ => IsEnabled);
+    }
+
+    private void GetSum(decimal result)
+    {
+        Application.Current.Dispatcher.Invoke(() =>
+        {
+            Result = result;
+        });
+    }
+
+    private void CalculateSum(object? parametr)
+    {
+        IsEnabled = true;
+
+        cancellationTokenSource = new CancellationTokenSource();
+        var cancellationToken = cancellationTokenSource.Token;
+
         var thread = new Thread(() => 
         {
-            decimal sum = 0;
-
-            for (int i = 1; i < Argument; i++)
+            try
             {
-                sum += i;
+                MyMath.GetSum(Argument, GetSum, cancellationToken);
             }
-
-            Result = sum;
+            catch (OperationCanceledException)
+            {
+                Result = 0;
+                _messageWindow.Invoke("Задача отменена");
+            }
+            catch (Exception)
+            {
+                _messageWindow.Invoke("Произошла ошибка вычислений");
+            }
+            finally
+            {
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    IsEnabled = false;
+                });
+            }
         });
 
         thread.Start();
-    }
-
-    public event PropertyChangedEventHandler? PropertyChanged;
-    public void OnPropertyChanged([CallerMemberName] string nameProperty = "")
-    {
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameProperty));
     }
 }

@@ -12,6 +12,6 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
 
-        DataContext = new MainWindowVm();
+        DataContext = new MainWindowVm((string message) => MessageBox.Show(message));
     }
 }
