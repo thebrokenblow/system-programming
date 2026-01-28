@@ -12,33 +12,65 @@
     d:DataContext="{d:DesignInstance Type=vm:MainWindowVm}"
     mc:Ignorable="d">
     <Grid>
-        <StackPanel
-            Width="350"
-            Height="120"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-
-            <TextBlock
+        <Grid>
+            <StackPanel
                 Width="350"
-                Height="30"
-                Text="{Binding Result}" />
+                Height="120"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center">
 
-            <TextBox
-                Width="350"
-                Height="30"
-                Text="{Binding Argument}" />
+                <TextBlock
+                    Width="350"
+                    Height="30"
+                    Text="{Binding Result}" />
 
-            <Button
-                Width="350"
-                Height="30"
-                Command="{Binding CalculateCommand}"
-                Content="Посчитать" />
+                <TextBox
+                    Width="350"
+                    Height="30"
+                    Text="{Binding Argument}" />
 
-            <Button
+                <Button
+                    Width="350"
+                    Height="30"
+                    Command="{Binding CalculateCommand}"
+                    Content="Посчитать" />
+
+                <Button
+                    Width="350"
+                    Height="30"
+                    Command="{Binding CancelCalculateCommand}"
+                    Content="Отмена" />
+            </StackPanel>
+            
+            <StackPanel
                 Width="350"
-                Height="30"
-                Command="{Binding CancelCalculateCommand}"
-                Content="Отмена" />
-        </StackPanel>
+                Height="120"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Center">
+
+                <TextBlock
+                    Width="350"
+                    Height="30"
+                    Text="{Binding Result}" />
+
+                <TextBox
+                    Width="350"
+                    Height="30"
+                    Text="{Binding Argument}" />
+
+                <Button
+                    Width="350"
+                    Height="30"
+                    Command="{Binding CalculateCommand}"
+                    Content="Посчитать" />
+
+                <Button
+                    Width="350"
+                    Height="30"
+                    Command="{Binding CancelCalculateCommand}"
+                    Content="Отмена" />
+            </StackPanel>
+        </Grid>
+
     </Grid>
 </Window>

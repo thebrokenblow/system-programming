@@ -4,6 +4,10 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
+  <Folder Name="/FifthLesson/">
+    <Project Path="TaskConsole/TaskConsole.csproj" Id="e7205d3d-bf0d-442b-9bf4-9316d29fcfa3" />
+    <Project Path="TaskDesktop/TaskDesktop.csproj" Id="1dc811e9-486e-4948-87d0-740606ea5716" />
+  </Folder>
   <Folder Name="/FirstLesson/">
     <Project Path="FirstLesson/FirstLesson.csproj" />
     <Project Path="SimpleMath/SimpleMath.vcxproj" Id="adf4d1f1-854a-4cc1-ac0c-b1fa29362965" />
